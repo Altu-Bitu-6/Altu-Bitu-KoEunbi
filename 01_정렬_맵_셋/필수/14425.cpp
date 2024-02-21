@@ -5,20 +5,20 @@
 using namespace std;
 
 int main(){
-    int N, M, i, result=0;
+    int n, m, i, result=0;
     map<string, int> set_S;
     string key;
 
-    cin >> N;
-    cin >> M;
+    cin >> n;
+    cin >> m;
 
-    string input[M];
+    string input[m];
     
-    for(i=0; i<N; i++){
+    for(i=0; i<n; i++){
         cin >> key;
         set_S[key] = i;
     }
-    for(i=0; i<M; i++){
+    for(i=0; i<m; i++){
         cin >> key;
         if(set_S.find(key) != set_S.end())
             result++;
