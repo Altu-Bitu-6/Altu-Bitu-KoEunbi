@@ -15,6 +15,8 @@ int main() {
 	bool prime[1000000] = { 0, };
 	findPrime(prime, 1000000);
 
+	ios::sync_with_stdio(false); 
+	cin.tie(NULL); cout.tie(NULL);
 
 	while (1) {
 		cin >> input;
