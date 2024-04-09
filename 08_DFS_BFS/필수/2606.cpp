@@ -10,7 +10,7 @@ vector <bool> visited_dfs;
 void dfs(int idx) {
     visited_dfs[idx] = true;
 
-    for (int i = 1; i <= n; i++) {
+    for (int i = 0; i < n; i++) {
         if (li[idx][i] == 1 && !visited_dfs[i]) {
             dfs(i);
         }
@@ -34,7 +34,6 @@ int main() {
         li[b - 1][a - 1] = 1;
     }
 
-    vector<int> ans_dfs;
     dfs(0);
 
     a = 0;
