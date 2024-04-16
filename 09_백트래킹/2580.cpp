@@ -9,23 +9,23 @@ int zeroCnt;
 bool flag = false;
 
 void dfs(int x, int y, int cnt) {
-    if (flag)
+    if (flag) //완성시 정지
         return;
 
     bool possible[10];
     for (int i=1; i<=9; i++)
         possible[i] = true;
 
-    for (int i = 1; i <= 9; i++) {
+    for (int i = 1; i <= 9; i++) { //가로방향 검사
         if (y== i) continue;
         possible[map[x][i]] = false;
     }
-    for (int i = 1; i <= 9; i++) {
+    for (int i = 1; i <= 9; i++) { // 세로 방향 검사
         if (x== i) continue;
         possible[map[i][y]] = false;
     }
 
-    int xx = 0;
+    int xx = 0; //칸안에서 검사사
     if (x%3==0)
         xx= x-3;
     else
@@ -49,7 +49,7 @@ void dfs(int x, int y, int cnt) {
 
     for (int i=1; i <= 9; i++) {
         if (possible[i]) {
-            if (cnt == zeroCnt) {
+            if (cnt == zeroCnt) { //마지막 빈칸 채웠을 시 완성
                 map[x][y] = i;
                 for (int i=1; i<=9; i++) {
                     for (int j=1; j<=9; j++) {
@@ -59,7 +59,7 @@ void dfs(int x, int y, int cnt) {
                 }
                 flag = true;
                 return;
-            }
+            } //다음 빈칸으로 진행
             else {
                 map[x][y]=i;
                 dfs(zeroPoint[cnt].first, zeroPoint[cnt].second, cnt+1);
@@ -70,7 +70,7 @@ void dfs(int x, int y, int cnt) {
 }
 
 int main(void) {
-    for (int i=1; i<=9; i++) {
+    for (int i=1; i<=9; i++) { //입력받기
         for (int j=1; j<=9; j++) {
             cin >> map[i][j];
             if (map[i][j]==0) {
