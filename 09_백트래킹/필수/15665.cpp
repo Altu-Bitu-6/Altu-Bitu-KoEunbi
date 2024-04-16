@@ -21,8 +21,8 @@ void dfs(int cnt) {
 
     for (int i = 0; i < num.size(); i++) {
         v.push_back(num[i]);
-        dfs(cnt + 1);
-        v.pop_back();
+        dfs(cnt + 1); //다음 숫자 선택
+        v.pop_back(); //선택한 숫자 제거 
     }
 }
 
@@ -31,13 +31,13 @@ int main() {
 
     int input;
     for (int i = 0; i < n; i++) {
-        cin >> input;
+        cin >> input; //처음 등장하는 숫자만 저장, 방문 기록
         if (visited[input] == 0)
             num.push_back(input);
         visited[input]++;
     }
 
-    sort(num.begin(), num.end());
+    sort(num.begin(), num.end());//오름차순 정렬
 
     for (int i = 0; i < num.size(); i++) {
         v.push_back(num[i]);
