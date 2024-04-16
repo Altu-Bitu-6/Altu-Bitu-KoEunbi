@@ -2,9 +2,9 @@
 
 using namespace std;
 
-int op[4];
-int num[11];
-int maxi = -1000000000, mini = 1000000000;
+int op[4]; //연산자
+int num[11]; //숫자
+int maxi = -1000000000, mini = 1000000000; //최대 최소 설정 위해
 int n;
 
 void dfs(int sum, int sub, int mul, int div, int a, int ans) {
@@ -13,12 +13,12 @@ void dfs(int sum, int sub, int mul, int div, int a, int ans) {
             mini = ans;
         if (ans > maxi)
             maxi = ans;
-    }
+    } //최대최소 정답 조정
 
-    if (sum > 0) dfs(sum - 1, sub, mul, div, a + 1, ans + num[a + 1]);
-    if (sub > 0) dfs(sum, sub - 1, mul, div, a + 1, ans - num[a + 1]);
-    if (mul > 0) dfs(sum, sub, mul - 1, div, a + 1, ans * num[a + 1]);
-    if (div > 0) dfs(sum, sub, mul, div - 1, a + 1, ans / num[a + 1]);
+    if (sum > 0) dfs(sum - 1, sub, mul, div, a + 1, ans + num[a + 1]); //덧셈 인자로 계산해서 탐색
+    if (sub > 0) dfs(sum, sub - 1, mul, div, a + 1, ans - num[a + 1]); //뺄셈
+    if (mul > 0) dfs(sum, sub, mul - 1, div, a + 1, ans * num[a + 1]); //곱하기
+    if (div > 0) dfs(sum, sub, mul, div - 1, a + 1, ans / num[a + 1]); //나누기
 }
 
 int main() {
