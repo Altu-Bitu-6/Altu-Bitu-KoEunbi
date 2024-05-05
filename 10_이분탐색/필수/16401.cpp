@@ -3,7 +3,28 @@
 #include <vector>
 
 using namespace std;
+int binarySearch(int n, int m, vector <int>& v) {
+    int l = 1, r = v[v.size() - 1];
+    int mid, cnt, size;
 
+    while (l <= r) {
+        mid = (l + r) / 2;
+        cnt = 0;
+
+        for (int i = 0; i < n; i++) {
+            cnt += v[i] / mid;
+        }
+        if (cnt >= m) {
+            l = mid + 1;
+            size = mid;
+        }
+        else if (cnt < m) {
+            r = mid - 1;
+        }
+    }
+
+    return size;
+}
 int main()
 {
     cin.tie(0); cout.tie(0);
@@ -19,15 +40,6 @@ int main()
 
     sort(snaks.begin(), snaks.end());
 
-    if (s < cou) {
-        while (snaks.size() < cou) {
-            s = snaks.size();
-            snaks[s - 1] /= 2;
-            snaks.resize(s + 1, snaks[s - 1]);
-            sort(snaks.begin(), snaks.end());
-        }
-    }
-
-    cout << snaks[snaks.size() - cou];
+    cout << binarySearch(s, cou, snaks);
 
 }
