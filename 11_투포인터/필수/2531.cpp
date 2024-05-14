@@ -21,17 +21,17 @@ int main() {
     for (int i = 0; i < n; i++) {
         cnt = 0;
 
-        for (int j = i; j < i + k; j++) {
+        for (int j = i; j < i + k; j++) { //i부터 k개 접시 검사
             if (!plate_check[plate[j % n]]) {
                 plate_check[plate[j % n]] = true;
                 cnt++;
             }
         }
 
-        if (!plate_check[c])
+        if (!plate_check[c])//쿠폰초밥을 아직 안먹었으면 
             cnt++;
 
-        ans = max(ans, cnt);
+        ans = max(ans, cnt); //최댓값 갱신
         memset(plate_check, false, sizeof(plate_check));
     }
 
