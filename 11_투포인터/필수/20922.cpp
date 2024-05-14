@@ -19,12 +19,12 @@ int main() {
 	int ans = 0, l = 1, r = 1;
 
 	while (l <= r && r <= n) {
-		if (arr2[arr1[r]] < k) {
-			arr2[arr1[r++]]++;
-			ans = max(ans, r - l);
+		if (arr2[arr1[r]] < k) {  //현재 원소의 개수가 K 미만
+			arr2[arr1[r++]]++; //오른쪽 포인터 이동
+			ans = max(ans, r - l); //최댓값 갱신
 		}
-		else if (arr2[arr1[r]] == k) {
-			arr2[arr1[l++]]--;
+		else if (arr2[arr1[r]] == k) { //K개인경우
+			arr2[arr1[l++]]--; //왼쪽 포인터 이동
 		}
 	}
 	cout << ans;
