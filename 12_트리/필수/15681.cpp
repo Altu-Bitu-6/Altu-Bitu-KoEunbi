@@ -8,19 +8,19 @@ bool visited[1000000] = { false, };
 int num[1000000];
 
 
-int dfs(int n) {
-    if (num[n] != 0)
+int dfs(int n) { //깊이 우선 탐색
+    if (num[n] != 0) //이미 계산되었다면 반환
         return num[n];
 
-    visited[n] = true;
+    visited[n] = true; //방문 표시
 
-    int ans = 1;
+    int ans = 1; //초기값 초기화
     for (int i = 0; i < v[n].size(); i++) {
         int next = v[n][i];
-        if (visited[next])
+        if (visited[next]) //방문 되었다면 패스
             continue;
 
-        ans += dfs(next);
+        ans += dfs(next); //인접토드 크기 더하기
     }
     num[n] = ans;
     return ans;
@@ -42,7 +42,8 @@ int main() {
     }
 
     num[root] = dfs(root);
-
+    //루트노드부터 서브트리 크기 계산
+    
     for (int i = 0; i < q; i++) {
         cin >> s;
         cout << num[s] << '\n';
